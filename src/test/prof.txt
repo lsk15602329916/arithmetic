@@ -1,0 +1,143 @@
+Statistical profiling result from isolate-000002A1ADC83000-70328-v8.log, (757 ticks, 0 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+    645   85.2%          C:\WINDOWS\SYSTEM32\ntdll.dll
+    101   13.3%          C:\Program Files\nodejs\node.exe
+      1    0.1%          C:\WINDOWS\System32\KERNELBASE.dll
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+      3    0.4%   30.0%  LazyCompile: *creatExpression C:\Users\www13\Desktop\arithmetic\src\js\utils\getExpressionUtils.js:43:25
+      2    0.3%   20.0%  LazyCompile: *writeFileExercises C:\Users\www13\Desktop\arithmetic\src\js\utils\fileUtils.js:18:28
+      2    0.3%   20.0%  LazyCompile: *resolve path.js:130:10
+      1    0.1%   10.0%  LazyCompile: *writeFileSync fs.js:1357:23
+      1    0.1%   10.0%  LazyCompile: *hidden internal/errors.js:283:25
+      1    0.1%   10.0%  LazyCompile: *appendFileSync fs.js:1394:24
+
+ [C++]:
+   ticks  total  nonlib   name
+
+ [Summary]:
+   ticks  total  nonlib   name
+     10    1.3%  100.0%  JavaScript
+      0    0.0%    0.0%  C++
+      2    0.3%   20.0%  GC
+    747   98.7%          Shared libraries
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+    645   85.2%  C:\WINDOWS\SYSTEM32\ntdll.dll
+    382   59.2%    LazyCompile: *appendFileSync fs.js:1394:24
+    247   64.7%      LazyCompile: *writeFileExercises C:\Users\www13\Desktop\arithmetic\src\js\utils\fileUtils.js:18:28
+    247  100.0%        Eval: ~<anonymous> C:\Users\www13\Desktop\arithmetic\src\test\test.js:1:1
+    247  100.0%          LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1091:37
+    247  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1146:37
+    135   35.3%      LazyCompile: ~writeFileExercises C:\Users\www13\Desktop\arithmetic\src\js\utils\fileUtils.js:18:28
+    135  100.0%        Eval: ~<anonymous> C:\Users\www13\Desktop\arithmetic\src\test\test.js:1:1
+    135  100.0%          LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1091:37
+    135  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1146:37
+    257   39.8%    LazyCompile: *writeFileSync fs.js:1357:23
+    253   98.4%      LazyCompile: *writeFileExercises C:\Users\www13\Desktop\arithmetic\src\js\utils\fileUtils.js:18:28
+    253  100.0%        Eval: ~<anonymous> C:\Users\www13\Desktop\arithmetic\src\test\test.js:1:1
+    253  100.0%          LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1091:37
+    253  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1146:37
+      4    1.6%      LazyCompile: ~appendFileSync fs.js:1394:24
+      4  100.0%        LazyCompile: ~writeFileExercises C:\Users\www13\Desktop\arithmetic\src\js\utils\fileUtils.js:18:28
+      4  100.0%          Eval: ~<anonymous> C:\Users\www13\Desktop\arithmetic\src\test\test.js:1:1
+      4  100.0%            LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1091:37
+
+    101   13.3%  C:\Program Files\nodejs\node.exe
+     81   80.2%    C:\Program Files\nodejs\node.exe
+     58   71.6%      LazyCompile: ~openSync fs.js:453:18
+     58  100.0%        LazyCompile: ~writeFileSync fs.js:1357:23
+     58  100.0%          LazyCompile: ~appendFileSync fs.js:1394:24
+     58  100.0%            LazyCompile: ~writeFileExercises C:\Users\www13\Desktop\arithmetic\src\js\utils\fileUtils.js:18:28
+      6    7.4%      LazyCompile: ~closeSync fs.js:419:19
+      6  100.0%        LazyCompile: ~writeFileSync fs.js:1357:23
+      6  100.0%          LazyCompile: ~appendFileSync fs.js:1394:24
+      6  100.0%            LazyCompile: ~writeFileExercises C:\Users\www13\Desktop\arithmetic\src\js\utils\fileUtils.js:18:28
+      4    4.9%      LazyCompile: ~writeSync fs.js:657:19
+      4  100.0%        LazyCompile: ~writeFileSync fs.js:1357:23
+      4  100.0%          LazyCompile: ~appendFileSync fs.js:1394:24
+      4  100.0%            LazyCompile: ~writeFileExercises C:\Users\www13\Desktop\arithmetic\src\js\utils\fileUtils.js:18:28
+      3    3.7%      LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:264:27
+      3  100.0%        LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:297:29
+      1   33.3%          LazyCompile: ~setupPrepareStackTrace internal/bootstrap/node.js:251:32
+      1  100.0%            Eval: ~<anonymous> internal/bootstrap/node.js:1:1
+      1   33.3%          Eval: ~<anonymous> stream.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:264:27
+      1   33.3%          Eval: ~<anonymous> internal/modules/esm/loader.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:264:27
+      2    2.5%      LazyCompile: *writeFileExercises C:\Users\www13\Desktop\arithmetic\src\js\utils\fileUtils.js:18:28
+      2  100.0%        Eval: ~<anonymous> C:\Users\www13\Desktop\arithmetic\src\test\test.js:1:1
+      2  100.0%          LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1091:37
+      2  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1146:37
+      2    2.5%      LazyCompile: *appendFileSync fs.js:1394:24
+      2  100.0%        LazyCompile: *writeFileExercises C:\Users\www13\Desktop\arithmetic\src\js\utils\fileUtils.js:18:28
+      2  100.0%          Eval: ~<anonymous> C:\Users\www13\Desktop\arithmetic\src\test\test.js:1:1
+      2  100.0%            LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1091:37
+      1    1.2%      LazyCompile: ~writeFileExercises C:\Users\www13\Desktop\arithmetic\src\js\utils\fileUtils.js:18:28
+      1  100.0%        Eval: ~<anonymous> C:\Users\www13\Desktop\arithmetic\src\test\test.js:1:1
+      1  100.0%          LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1091:37
+      1  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1146:37
+      1    1.2%      LazyCompile: ~open fs.js:427:14
+      1  100.0%        LazyCompile: ~writeFileExercises C:\Users\www13\Desktop\arithmetic\src\js\utils\fileUtils.js:18:28
+      1  100.0%          Eval: ~<anonymous> C:\Users\www13\Desktop\arithmetic\src\test\test.js:1:1
+      1  100.0%            LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1091:37
+      1    1.2%      LazyCompile: ~formatPrimitive internal/util/inspect.js:1337:25
+      1  100.0%        LazyCompile: ~formatValue internal/util/inspect.js:690:21
+      1  100.0%          LazyCompile: ~formatProperty internal/util/inspect.js:1634:24
+      1  100.0%            LazyCompile: ~formatRaw internal/util/inspect.js:756:19
+      1    1.2%      LazyCompile: *toNamespacedPath path.js:549:19
+      1  100.0%        LazyCompile: *appendFileSync fs.js:1394:24
+      1  100.0%          LazyCompile: *writeFileExercises C:\Users\www13\Desktop\arithmetic\src\js\utils\fileUtils.js:18:28
+      1  100.0%            Eval: ~<anonymous> C:\Users\www13\Desktop\arithmetic\src\test\test.js:1:1
+      1    1.2%      LazyCompile: *normalizeString path.js:52:25
+      1  100.0%        LazyCompile: ~resolve path.js:130:10
+      1  100.0%          LazyCompile: ~toNamespacedPath path.js:549:19
+      1  100.0%            LazyCompile: ~openSync fs.js:453:18
+      1    1.2%      LazyCompile: *evalFraction C:\Users\www13\Desktop\arithmetic\src\js\utils\eval.js:220:22
+      1  100.0%        LazyCompile: *evalRPN C:\Users\www13\Desktop\arithmetic\src\js\utils\eval.js:108:17
+      1  100.0%          LazyCompile: ~writeFileExercises C:\Users\www13\Desktop\arithmetic\src\js\utils\fileUtils.js:18:28
+      1  100.0%            Eval: ~<anonymous> C:\Users\www13\Desktop\arithmetic\src\test\test.js:1:1
+      5    5.0%    LazyCompile: *creatExpression C:\Users\www13\Desktop\arithmetic\src\js\utils\getExpressionUtils.js:43:25
+      4   80.0%      LazyCompile: *writeFileExercises C:\Users\www13\Desktop\arithmetic\src\js\utils\fileUtils.js:18:28
+      4  100.0%        Eval: ~<anonymous> C:\Users\www13\Desktop\arithmetic\src\test\test.js:1:1
+      4  100.0%          LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1091:37
+      4  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1146:37
+      1   20.0%      LazyCompile: ~writeFileExercises C:\Users\www13\Desktop\arithmetic\src\js\utils\fileUtils.js:18:28
+      1  100.0%        Eval: ~<anonymous> C:\Users\www13\Desktop\arithmetic\src\test\test.js:1:1
+      1  100.0%          LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1091:37
+      1  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1146:37
+      4    4.0%    LazyCompile: *appendFileSync fs.js:1394:24
+      3   75.0%      LazyCompile: ~writeFileExercises C:\Users\www13\Desktop\arithmetic\src\js\utils\fileUtils.js:18:28
+      3  100.0%        Eval: ~<anonymous> C:\Users\www13\Desktop\arithmetic\src\test\test.js:1:1
+      3  100.0%          LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1091:37
+      3  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1146:37
+      1   25.0%      LazyCompile: *writeFileExercises C:\Users\www13\Desktop\arithmetic\src\js\utils\fileUtils.js:18:28
+      1  100.0%        Eval: ~<anonymous> C:\Users\www13\Desktop\arithmetic\src\test\test.js:1:1
+      1  100.0%          LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1091:37
+      1  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1146:37
+      2    2.0%    LazyCompile: ~toNamespacedPath path.js:549:19
+      1   50.0%      LazyCompile: ~openSync fs.js:453:18
+      1  100.0%        LazyCompile: ~writeFileSync fs.js:1357:23
+      1  100.0%          LazyCompile: ~appendFileSync fs.js:1394:24
+      1  100.0%            LazyCompile: ~writeFileExercises C:\Users\www13\Desktop\arithmetic\src\js\utils\fileUtils.js:18:28
+      1   50.0%      LazyCompile: *appendFileSync fs.js:1394:24
+      1  100.0%        LazyCompile: ~writeFileExercises C:\Users\www13\Desktop\arithmetic\src\js\utils\fileUtils.js:18:28
+      1  100.0%          Eval: ~<anonymous> C:\Users\www13\Desktop\arithmetic\src\test\test.js:1:1
+      1  100.0%            LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1091:37
+      2    2.0%    LazyCompile: *writeFileExercises C:\Users\www13\Desktop\arithmetic\src\js\utils\fileUtils.js:18:28
+      2  100.0%      Eval: ~<anonymous> C:\Users\www13\Desktop\arithmetic\src\test\test.js:1:1
+      2  100.0%        LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1091:37
+      2  100.0%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1146:37
+      2  100.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:973:33
+

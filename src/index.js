@@ -1,44 +1,56 @@
 // 主函数
 const fs = require('fs')
-const { writeFileExercises } = require('./js/utils/fileUtils')
-
+const { writeFileExercises, readFileToArr, writeResult, checkFile } = require('./js/utils/fileUtils')
+const { checkAnswer } = require('./js/utils/eval')
 
 function myParseInt(value, dummyPrevious) {
-    // parseInt takes a string and an optional radix
-    return parseInt(value);
+    let reg = /^[0-9]*$/
+        // parseInt takes a string and an optional radix
+    if (reg.test(value)) return parseInt(value);
+    throw 'has illegal Number!'
 }
 
 const objectValid = (obj) => {
-    let flag = true
-    Object.keys(obj).forEach(function(key) {
-        if (!obj[key] || isNaN(obj[key])) {
-            flag = false
+
+    for (let i in obj) {
+        if (typeof obj[i] === 'number' && (!obj[i] || isNaN(obj[i]))) {
+            throw 'has illegal Number!'
         }
-    })
-    return flag
+    }
+    return true
 }
+
+
 
 const program = require('commander');
 program
     .version('1.0.0')
-    .requiredOption('-n, --number [num]', 'add a number', myParseInt)
+    .description('a test cli program')
+    .option('-n, --number [num]', 'add a number', myParseInt, 10)
     .option('-r, --range [range]', 'add a numeric range ', myParseInt, 10)
+    .option('-e, --exer <exercisefile>', 'add a exercisefile ', checkFile)
+    .option('-a, --ans <answerfile>', 'add a answerfile ', checkFile)
     .action((args) => {
-        if (objectValid(args)) {
-            writeFileExercises('./output/Exercises.txt', './output/answer.txt', args.number, args.range)
+        // console.log(args);
+        if (args.exer && args.ans) {
+            Promise.all([readFileToArr(args.exer), readFileToArr(args.ans)]).then((values) => {
+                const exercisesStack = values[0]
+                const answerStack = values[1]
+                const correct = []
+                const wrong = []
+                for (let i in exercisesStack) {
+                    if (checkAnswer(exercisesStack[i], answerStack[i])) {
+                        correct.push(parseInt(i) + 1)
+                        continue
+                    }
+                    wrong.push(parseInt(i) + 1)
+                }
+                writeResult('./output/Grade.txt', correct, wrong)
+            });
+            return
         }
-        // writeFileExercises('./output/Exercises.txt', './output/answer.txt', 10000, 10)
+        if (objectValid(args)) {
+            writeFileExercises('./output/Exercises.txt', ' ', args.number, args.range)
+        }
     })
     .parse(process.argv);
-
-// console.log(number)
-
-// let MAX_NUM, expressionNum
-
-// writeFileExercises('./output/Exercises.txt', './output/answer.txt', 10000, 10)
-
-
-
-
-
-// inquirer.prompt(questionsByNum)

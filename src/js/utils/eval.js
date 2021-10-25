@@ -325,9 +325,15 @@ const getMinMultiple = (x, y) => {
     return x * y / getMaxFactor(x, y)
 }
 
-
-// let text = ' 9 * (10 + 7/9) = '
-// console.log(evalRPN(text));
+/**
+ * 判断答案是否正确
+ * @param {*} que 
+ * @param {*} ans 
+ * @returns 
+ */
+const checkAnswer = (que, ans) => {
+    return evalRPN(que).toString() === ans.split(/[=\s]/).join("")
+}
 
 
 
@@ -335,5 +341,6 @@ const getMinMultiple = (x, y) => {
 module.exports = {
     getMaxFactor,
     evalRPN,
-    formatFraction
+    formatFraction,
+    checkAnswer
 }

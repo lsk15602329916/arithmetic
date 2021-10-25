@@ -3,15 +3,9 @@ const fs = require('fs')
 const Path = require('path')
 const { creatExpression, formatFraction } = require('./getExpressionUtils')
 const { evalRPN } = require('./eval')
+const readLine = require("readline");
 
-// const checkFile = (path) => {
-//     let flag
-//     fs.accessSync(path, (err) => {
-//         // let flag = err
-//         // console.log(err)
-//         return err
-//     });
-// }
+
 
 
 
@@ -50,10 +44,81 @@ const writeFileExercises = (path1, path2, Number, MAX_NUM) => {
     console.log('OK!')
 }
 
-// console.log('0' == typeof false)
+/**
+ * 将结果写入Grade.txt
+ * @param {*} path 
+ * @param {*} correct 
+ * @param {*} wrong 
+ */
+const writeResult = (path, correct, wrong) => {
+    console.log('Please wait for generation...')
+    fs.open(path, 'w+', function(err, fd) {
+        if (err) {
+            return console.error(err);
+        }
+    });
+    const correctlen = correct.length,
+        wronglen = wrong.length
+    let data = 'Correct: ' + `${correctlen}` + ' (' + `${correct.join(', ')}` + ')'
+    fs.appendFileSync(path, data + '\n', 'utf8')
+    data = 'Wrong: ' + `${wronglen}` + ' (' + `${wrong.join(', ')}` + ')'
+    fs.appendFileSync(path, data + '\n', 'utf8')
+    console.log('OK!')
 
+}
+
+/**
+ * 整理数据格式
+ * @param {*} content 
+ * @returns 
+ */
+const formatContent = (content) => {
+    return content.split(/[.]/).slice(1).join('')
+}
+
+/**
+ * 按行读取文件内容
+ *
+ * @param fReadName 文件名路径
+ * @return 字符串数组
+ */
+const readFileToArr = (fReadName) => {
+    return new Promise((resolve) => {
+        const arr = [];
+        const readObj = readLine.createInterface({
+
+            input: fs.createReadStream(fReadName)
+        });
+
+        readObj.on('line', function(line) {
+
+            arr.push(formatContent(line));
+        });
+        readObj.on('close', function() {
+            resolve(arr)
+        });
+    })
+}
+
+/**
+ * 检查文件是否存在
+ * @param {*} file 
+ * @param {*} oldval 
+ * @returns 
+ */
+const checkFile = (file, oldval) => {
+    fs.open(file, function(err, fd) {
+        if (err) {
+            throw 'this file is inexistence!'
+        }
+    })
+    return file
+}
 
 module.exports = {
     // checkFile: checkFile,
-    writeFileExercises
+    writeFileExercises,
+    readFileToArr,
+    writeResult,
+    checkFile
 }
